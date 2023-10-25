@@ -3,7 +3,7 @@
   "solution": {
     "name": "WikiTraccs Page Companion",
     "id": "090776f0-fed6-4b74-bfd5-a822d9a9843b",
-    "version": "1.0.0.3",
+    "version": "1.0.0.4",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

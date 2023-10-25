@@ -1,10 +1,51 @@
-# wikitraccs-sp-page-companion
+# WikiTraccs Page Companion
 
 ## Summary
 
-Short summary on functionality and used technologies.
+This solution applies **legacy image positioning** to SharePoint pages.
 
-[picture of the solution in action, if possible]
+In 2023 Microsoft changed the way **adjacent images** are rendered on modern SharePoint pages, in the text editor web part. The culprit is a new CSS selector on the page, that hasn't been there before. Images that were shown next to each other suddenly were shown one below the other.
+
+The new image formatting is activated as soon as an older page is going into **edit mode**. There is no way to prevent that.
+
+This solution allows to roll this formatting change back, on an opt-in per-page basis.
+
+## Details
+
+The whole background story can be read here: [Broken inline image positioning in SharePoint.](https://www.wikitransformationproject.com/blog/2023/10/07/broken-inline-image-positioning-in-sharepoint).
+
+Putting images next to each other is a vital feature for authors. So it is not acceptable that this is not possible anymore.
+
+This is the new CSS selector that prevents images from being put next to each other:
+
+```css
+    div.containerPlugin, div.imagePlugin {
+      clear: both;
+    }
+```
+
+This SharePoint Framework Solution changes that to:
+
+```css
+    div.containerPlugin, div.imagePlugin {
+      clear: none;
+    }
+```
+
+Note: This is a modification to the SharePoint user interface that is not officially supported by Microsoft. So this could break. That's why this solution allows authors to selectively switch this feature on, for pages they edit. An alternative would be to manually restructure the page.
+
+## What is WikiTraccs?
+
+[WikiTraccs](https://www.wikitransformationproject.com/) is a Confluence to SharePoint migration tool. It is used by clients worldwide to migrate hundreds of thousands of pages to SharePoint. Changes in pages directly affect those migration results. And this latest change affects them negatively.
+
+## How to install the WikiTraccs Page Companion app?
+
+1. Download the SPFx solution **wikitraccs-sp-page-companion.sppkg** from [Releases](https://github.com/WikiTransformationProject/wikitraccs-sharepoint-page-companion/releases)
+2. Upload **wikitraccs-sp-page-companion.sppkg** to the tenant app catalog, just install, don't activate for all sites
+3. Open a site you want to use the solution in
+4. Add the app via **New** > **App** > **WikiTraccs Page Companion**
+
+Now, when editing a migrated modern SharePoint page, the toggle button should appear.
 
 ## Used SharePoint Framework Version
 
@@ -17,22 +58,11 @@ Short summary on functionality and used technologies.
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| 1.0     | October, 2023 | Initial release |
 
 ## Disclaimer
 
@@ -46,28 +76,6 @@ Short summary on functionality and used technologies.
 - Ensure that you are at the solution folder
 - in the command-line run:
   - **npm install**
-  - **gulp serve**
+  - **npm run serve**
 
-> Include any additional steps as needed.
-
-## Features
-
-Description of the extension that expands upon high-level summary above.
-
-This extension illustrates the following concepts:
-
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
-
-## References
-
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+Note: this solution uses spfx-fast-serve.

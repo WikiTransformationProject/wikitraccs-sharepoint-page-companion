@@ -59,6 +59,7 @@ export default class WikitraccsSpPageCompanionApplicationCustomizer
     this.initMutationObserver();
 
     this.updateCachedContext();
+    await this.ensureListExistenceAsync();
     await this.retrieveLegacyImageModeForCurrentPageAsync();
 
     this._unsubscribe = subscribe(globalState.isLegacyImageMode, (ops) => {
@@ -186,12 +187,9 @@ export default class WikitraccsSpPageCompanionApplicationCustomizer
       || (this.context?.pageContext?.list?.serverRelativeUrl?.toLowerCase().indexOf("sitepages") ?? -1) > -1;
   }
 
-  private async checkLegacyImageSettingForCurrentPageAsync(): Promise<void> {
+  private async ensureListExistenceAsync(): Promise<void> {
     try {
-      const r = await this._spfi?.web.lists.getByTitle(PAGESETTINGSLISTTITLE).getItemsByCAMLQuery({
-        ViewXml: `<View><Query><Where><Eq><FieldRef Name="WtPageId"/><Value Type="Number">${this._currentListItemId}</Value></Eq></Where></Query></View>`,
-      });
-      console.log(r);
+      await this._spfi?.web.lists.getByTitle(PAGESETTINGSLISTTITLE)();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       const listDoesNotExist = (error.message?.indexOf(`List '${PAGESETTINGSLISTTITLE}' does not exist at site`) ?? -1) > -1;
@@ -305,10 +303,6 @@ export default class WikitraccsSpPageCompanionApplicationCustomizer
     if (!this.isOnPage()) {
       return;
     }
-
-    // ok we are on a page - check state
-    // eslint-disable-next-line no-void
-    void this.checkLegacyImageSettingForCurrentPageAsync();
   }
 
   private _onDispose(): void {

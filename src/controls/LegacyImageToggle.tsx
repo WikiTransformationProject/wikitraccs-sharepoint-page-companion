@@ -29,7 +29,7 @@ export const LegacyImageToggle: React.FunctionComponent<{}> = (props)  => {
         boxShadow: "0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28)",
         padding: "12px"
         }}>
-        <Toggle label="Legacy image positioning" checked={checked ?? false} onText="On" offText="Off" onChange={handleOnChange} />
+        <Toggle label="Legacy image positioning (by WikiTraccs)" checked={checked ?? false} onText="On" offText="Off" onChange={handleOnChange} />
         { (isSavingSnap.value) && <Spinner style={{position: "absolute", right: "4px", bottom: "4px"}} size={SpinnerSize.xSmall} /> }
         
     </div> : null;
