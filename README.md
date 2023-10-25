@@ -10,6 +10,24 @@ The new image formatting is activated as soon as an older page is going into **e
 
 This solution allows to roll this formatting change back, on an opt-in per-page basis.
 
+## A tale in 3 screenshots
+
+Before entering edit mode, all is well. The page looks like this:
+
+![image](https://github.com/WikiTransformationProject/wikitraccs-sharepoint-page-companion/assets/3469970/b13feb29-662b-4237-9ffb-25bdce2920fb)
+
+When entering edit mode for the first time, SharePoint upgrades the page and applies new styling. It now looks like this:
+
+![image](https://github.com/WikiTransformationProject/wikitraccs-sharepoint-page-companion/assets/3469970/62909b45-694a-4af2-882b-eae307fa0466)
+
+Note the little toggle button in the lower right corner. It says **Legacy image positioning (by WikiTraccs)**. Toggle this and the images move right where they belong:
+
+![image](https://github.com/WikiTransformationProject/wikitraccs-sharepoint-page-companion/assets/3469970/8a03f4bb-c122-4b59-8726-c6a8a8caa76c)
+
+This SharePoint Framework solution adds the little toggle button to the lower right corner.
+
+_Note that around mid 2023 Microsoft introduced other formatting changes as well, e.g. paragraphs have been played with. Thus the different spacing. But that is [another story](https://answers.microsoft.com/en-us/msoffice/forum/all/no-paragraph-spacing-in-text-web-part-sharepoint/ff9dd2fa-e89c-4f88-9458-93bca4579506)._
+
 ## Details
 
 The whole background story can be read here: [Broken inline image positioning in SharePoint.](https://www.wikitransformationproject.com/blog/2023/10/07/broken-inline-image-positioning-in-sharepoint).
