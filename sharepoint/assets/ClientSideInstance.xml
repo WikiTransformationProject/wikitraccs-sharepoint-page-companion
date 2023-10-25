@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="WikitraccsSpPageCompanion"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="8fc5b205-02fa-45be-a17c-339cc0266912"
+        Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </ClientSideComponentInstance>
+</Elements>

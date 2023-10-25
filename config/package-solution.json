@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "WikiTraccs Page Companion",
+    "id": "090776f0-fed6-4b74-bfd5-a822d9a9843b",
+    "version": "1.0.0.3",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Wiki Transformation Project - Heinrich Ulbricht",
+      "websiteUrl": "https://www.wikitransformationproject.com",
+      "privacyUrl": "https://www.wikitransformationproject.com/terms-of-service#7-customer-data-and-privacy",
+      "termsOfUseUrl": "https://www.wikitransformationproject.com/terms-of-service",
+      "mpnId": "6699724"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Enable legacy image positioning on SharePoint pages"
+      },
+      "longDescription": {
+        "default": "Enable legacy image positioning on SharePoint pages that have been migrated by the WikiTraccs Confluence to SharePoint migration tool"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "WikiTraccs Page Companion Extension",
+        "description": "Deploys a custom action with ClientSideComponentId association",
+        "id": "3ba19df9-6455-427e-b766-392953a45c57",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "ClientSideInstance.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/wikitraccs-sp-page-companion.sppkg"
+  }
+}
